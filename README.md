@@ -28,6 +28,25 @@ Open `defects_eda.ipynb` in Jupyter and run the notebook cells. The notebook inc
 - model training for repair cost prediction
 - saving the trained models to `severity_model.pkl` and `cost_model.pkl`
 
+## Data versioning with DVC
+
+The dataset `defects_data.csv` is tracked with DVC. This means the data file is not committed directly to Git, but its DVC metadata is.
+
+To reproduce the data versioning setup or add new datasets:
+
+```bash
+python -m dvc init
+python -m dvc add defects_data.csv
+git add defects_data.csv.dvc .gitignore
+git commit -m "Track defects_data.csv with DVC"
+```
+
+To check the DVC status:
+
+```bash
+python -m dvc status
+```
+
 ## Run FastAPI service
 
 Start the API server with:
